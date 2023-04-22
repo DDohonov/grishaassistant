@@ -1,69 +1,101 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
+import time
+import os
+
+
+service = Service(executable_path=os.path.abspath(__file__ + "/..") + "/chromedriver")
+driver = webdriver.Chrome(service=service)
+driver.implicitly_wait(5)
 
 
 def andrew(voice_input):
-    result = requests.get("https://rezka.ag/", headers={'Accept': '*/*', 'User-Agent': 'a'})
-    soup = BeautifulSoup(result.text, 'html.parser')
-    sss = soup.find('div', class_="b-content__inline_item-link")
+    driver.get('https://drivemusic.club/best_music.html')
+    search =  driver.find_element(By.ID, 'form-search')
+    search.click()
+    search.send_keys(voice_input)
+    search.submit()
+    search = driver.find_element(By.CLASS_NAME, 'btn_player')
+    search.click()
+andrew('rock')
+
+
 
 
 def olya(voice_input):
-    result = requests.get("https://rezka.ag/?filter=watching&genre=2")
-    soup = BeautifulSoup(result.text, 'html.parser')
-    sereals = soup.find('div', class_="b-content__inline_item-link")
-    print(sereals.text)
+    driver.get('https://music.youtube.com/')
+    search = driver.find_element(By.ID,'icon')
+    search.click()
+    time.sleep(4)
+    search = driver.find_element(By.CSS_SELECTOR,'.search-box input')
+    
+    search.send_keys(voice_input)
+    time.sleep(4)
+    search.send_keys(Keys.ENTER)
+    time.sleep(4)
+    video = driver.find_elements(By.TAG_NAME,'ytmusic-play-button-renderer')[1]
+    print(video)
+    video.click()
 
+    
 def diana(voice_input):
-    result = requests.get("https://rezka.ag/series/fantasy/1749-sverhestestvennoe-2005.html")
-    soup = BeautifulSoup(result.text, 'html.parser')
-    name = soup.find('div', class_="b-post__title")
-    year = soup.find('a', href="https://rezka.ag/year/2005/") 
-    print(name.next_element.text)
-    print(year.text)
+    driver.get('https://sefon.pro/search/')
+    search =  driver.find_element(By.NAME, 'q')
+    search.send_keys(voice_input)
+    search.submit()
+    button1 = driver.find_element(By.CLASS_NAME, 'btn play')
+    button1.click()
 
-def art():
-    result = requests.get("https://rezka.ag/series/", headers = {'Accept': '*/*', 'User-Agent': 'pon'})
-    soup = BeautifulSoup(result.text, 'html.parser')
-    name = soup.find('div', class_='b-content__inline_item-link').find('a').text
-    god = soup.find('div', class_='b-content__inline_item-link').find('div').text
-    print(name)
-    print(god)
+
     
 def denisM(voice_input):
-    result = requests.get('b-content__inline_item-link')
-    soup = BeautifulSoup(result.text, 'html.parser')
-    nazvanie = soup.find('div', class_ = 'b-post__title').text
+    pass
 
+    
+
+    
+# rock
 def art(voice_input):
-    res = requests.get('https://www.unian.ua/?utm_source=siteua&utm_medium=siteua&utm_campaign=siteua')
-    soup = BeautifulSoup(res.text, 'html.parser')
-    
-    capt = soup.find('a', class_ = 'main-unit__title').text
-    
-    print(capt)
-      
+    driver.get("https://music.youtube.com/moods_and_genres")
+    search = driver.find_element(By.CLASS_NAME, 'style-scope ytmusic-grid-renderer')[44]
+    search.click()
+    play_search = driver.find_element(By.CLASS_NAME, 'style-scope ytmusic-carousel')[19]
+    play_search.click()
+
 
 def vanya(voice_input):
-    result = requests.get('https://rezka.ag/?filter=watching&genre=2')  
-    soup = BeautifulSoup(result.text, 'html.parser')
-    name = soup.find('div', class_= 'b-content')
+    driver.get('https://music.youtube.com')
+    search = driver.find_element(By.ID, 'placeholder')
+    search.click()
+    time.sleep(3.0)
+    # search = driver.find_element(By.)
+    search.send_keys(voice_input)
+    search.submit()
       
 def danya(voice_input):
-    response = requests.get("https://rezka.ag/?filter=watching&genre=2",{'Accept': '*/*', 'User-Agent': 'a'})
-    soup = BeautifulSoup(response.text,"html.parser")
-    now_watching = soup.find('a',class_ = 'b-content__main_filters_link active')
-    first = soup.find('div', class_ = 'b-content__inline_item-link')
-    print(now_watching.text)
-    print(first.text)
+    driver = webdriver.Chrome()
+    driver.get("https://www.youtube.com/")
+    search_box = driver.find_element_by_name("search_query")
+    search_box.send_keys("бах")
+    search_box.submit()
+    first_video = driver.find_element(By.CSS_SELECTOR, "#contents > ytd-video-renderer:nth-child(1) > div > div > div > div > h3 > a")
+    first_video.click()
 
 
-
+    
 def denisk(voice_input):
-    result = requests.get('https://rezka.ag/?filter=watching&genre=2')
-    # soup = BeautifulSoup(response.text,'html.parser')
-    # a = sop.find('div',class = )
- 
+    driver.get('https://open.spotify.com/')
+    search = driver.find_element(By.ID,"search")
+    search.send_keys(voice_input)
+    search.submit()
+
+def maksg(voice_input):
+    driver.get('https://music.youtube.com')
+    search = driver.find_element(By.ID, 'search')
+    search.send_keys(voice_input)
+    search.submit()
     
 
 
