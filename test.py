@@ -3,8 +3,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
+import random
 import os
+import random
 from selenium.webdriver.common.action_chains import ActionChains
+import random
 
 
 service = Service(executable_path=os.path.abspath(__file__ + "/..") + "/chromedriver")
@@ -19,141 +22,81 @@ def registr():
     psw_search = driver.find_elements(By.TAG_NAME,"input")[1]
     psw_search.send_keys('qwerty123456')
     time.sleep(5)
-    search = driver.find_element(By.CLASS_NAME, 'encore-bright-accent-set')               
-    search.click()  
+    search = driver.find_element(By.CLASS_NAME, 'encore-bright-accent-set')
+    search.click()
 
 def andrew(voice_input):
-    driver.get('https://open.spotify.com/search')
-    time.sleep(5)
-    search =  driver.find_element(By.TAG_NAME, 'input')
+    driver.get('https://rezka.ag/series/')
+    time.sleep(3)
+    search = random.choices(driver.find_elements(By.CLASS_NAME, 'b-content__inline_item-cover'))
     search.click()
-    search.send_keys(voice_input)
-    search.submit()
-    time.sleep(5)
-    search = driver.find_element(By.CLASS_NAME, '_gB1lxCfXeR8_Wze5Cx9')
+    time.sleep(3)
+    # search.send_keys(voice_input)    driver.execute_script("window.scrollTo(0, -250);")
+    time.sleep(1)
+    search = driver.find_element(By.TAG_NAME, "video")
     search.click()
-    time.sleep(5)
-    search = driver.find_elements(By.CLASS_NAME, 'PFgcCoJSWC3KjhZxHDYH')[1]
+    time.sleep(1)
+    search = driver.find_element(By.ID, "fullscreen13")
     search.click()
-    time.sleep(5)
-    search = driver.find_element(By.CLASS_NAME, 'eIvwKg')
-    search.click()
-    registr()
-andrew('rock')
+# andrew('qw')
 # clastbro22@gmail.com
 # qwerty123456
 
 
 def olya(voice_input):
-    driver.get('https://open.spotify.com/')
-    search = driver.find_element(By.CLASS_NAME,'Type__TypeElement-sc-goli3j-0 bNyYSN QO9loc33XC50mMRUCIvf')
+    driver.get('https://uakino.club/filmy/')
+    search = driver.find_element(By.CLASS_NAME,'fa fa-play-circle go-watch')
     search.click()
-    search.send_keys(voice_input)
-    search.submit()
-    time.sleep(4)
-    search = driver.find_element(By.CLASS_NAME,'Type__TypeElement-sc-goli3j-0 gYqKuy t_yrXoUO3qGsJS4Y6iXX standalone-ellipsis-one-line')
-    search.click()
-   
+    #search.send_keys(voice_input)
+    search = driverfind_element(By.ID, '_atssh492')
+    search.click
+    #time.sleep(4)
+    #search = driver.find_element(By.CLASS_NAME,'ScCoreLink-sc-16kq0mq-0 fQAQWb tw-link')
+    #search.click()
+
    
     
 def diana(voice_input):
-    driver.get('https://open.spotify.com')
-    search =  driver.find_element(By.ID, 'buttonPrimary')
-    search.send_keys(Keys.ENTER)
-    time.sleep(5)
-    
-    user = driver.find_element(By.ID, 'login-username')
-    user.send_keys('clastbro22@gmail.com')
-    user.submit()
-    time.sleep(5)
-    
-    password = driver.find_element(By.ID, 'login-password')
-    password.send_keys('qwerty123456')
-    password.submit()
-    time.sleep(5)
-    
-    entrance = driver.find_element(By.ID, 'type')
-    entrance.click()
-    time.sleep(5)
-    
-    search1 = driver.find_element(By.CLASS_NAME, 'Type__TypeElement-sc-goli3j-0 jqNXli ellipsis-one-line')
-    search1.click()
-    time.sleep(5)
-
-    search2 = driver.find_element(By.CLASS_NAME, 't2K4_iLmAyDtH7mcT5Wy')
-    search2.send_keys('Rock')
-    search2.submit()
-    
+    driver.get('https://rezka.ag/?filter=last&genre=1')
+    number = random.randint(53553, 57253)
+    search = driver.find_element(By.ID, number)
+    search.click()
 
 
     #encore-bright-accent-set
 def denisM(voice_input):
-    driver.get('https://open.spotify.com/search')
-    search = driver.find_elements(By.CLASS_NAME, 'Type__TypeElement-sc-goli3j-0')[0]
+    driver.get('https://rezka.ag/series/best/')
+    search = driver.find_elements(By.ID, 'search-field')[2]
+    time.sleep(2)
+    serii = driver.find_element(By.CLASS_NAME, 'b-content__inline_item-link')
+    
+def art(voiceinput):
+    driver.page_load_strategy = 'none'
+    driver.get('https://rezka.ag/series/')
     time.sleep(1)
-    search.send_keys('Rock')
-    time.sleep(3)
-    search = driver.find_elements(By.CLASS_NAME, 'gvLrgQXBFVW6m9MscfFA')[1]
-    search.click()
     time.sleep(2)
-    search = driver.find_elements(By.CLASS_NAME, 'ButtonInner-sc-14ud5tc-0')[3]
-    search.click()
-    time.sleep(5)
-    button = driver.find_element(By.CLASS_NAME, 'eIvwKg')
-    button.click()
-    time.sleep(2)
-    search = driver.find_element(By.ID, 'login-username')
-    search.send_keys('clastbro22@gmail.com')
-    search = driver.find_element(By.ID, 'login-password')
-    search.send_keys('qwerty123456')
-    time.sleep(2)
-    search = driver.find_element(By.CLASS_NAME, 'encore-bright-accent-set')               
-    search.click()      
-
-    
-# rock
-def art(voice_input):
-    driver.get('https://open.spotify.com/search')
-    time.sleep(3)
-    search =  driver.find_element(By.TAG_NAME, 'input')
-    search.click()
-    search.send_keys(voice_input)
-    search.submit()
-
-
+    driver.stop()
+    serial = driver.find_elements(By.CLASS_NAME, 'b-content__inline_item-cover')
+    choise = random.choice(serial)
+    choise.click()
+art('rrr')
 def vanya(voice_input):
-    driver.get('https://open.spotify.com')
-    search = driver.find_element(By.CLASS_NAME, 'link-subtle UYeKN11KAw61rZoyjcgZ')
-    search.click()
-    time.sleep(3)
-    search.send_keys(voice_input)
-    search.submit()
-    time.sleep(3)
-    search.driver.find_element(By.CLASS_NAME,'_gB1lxCfXeR8_Wze5Cx9')
-    search.click()
-    time.sleep(3)
-    search.driver.find_element(By.CLASS_NAME, 'ButtonInner-sc-14ud5tc-0 fipMme encore-bright-accent-set')
+    driver.get('https://rezka.ag/ps:/ww')
+    search = driver.find_element(By.CLASS_NAME, 'b-search__submit')
     search.click()
     
-      
+
+
 def danya(voice_input):
-    driver.get("https://open.spotify.com/search")
-    entr = driver.find_element(By.CLASS_NAME,"ButtonInner-sc-14ud5tc-0 iIKcFo encore-inverted-light-set")
-    time.sleep(6)
-    entr.click()
-    entr2 = driver.find_element(By.CLASS_NAME, "Input-sc-1gbx9xe-0 eRUvFB")
-    time.sleep(6)
-    entr2.click()
-    time.sleep(2.5)
-    entr2.send_keys("clastbro22@gmail.com")
-    entr3 = driver.find_element(By.CLASS_NAME, "Input-sc-1gbx9xe-0 fOpTaL")
-    time.sleep(6)
-    entr3.click()
-    time.sleep(2.5)
-    entr3.send_keys("qwerty123456")
-    entr4 = driver.find_element(By.CLASS_NAME, "Type__TypeElement-sc-goli3j-0 kwLSIj sc-eDvSVe itlAHd")
-    entr4.click()
-    
+    driver.get("hhttps://rezka.ag/ssereriebs/be2st/2022/")
+    entrentr = driver.find_element(By.ID, "")
+    entrentr.click() 
+    sksk = driver.send_keys(voice_input) 
+    sksk.submit()
+    vidvid = driver.find_elements(By.CLASS_NAME, "")[1]
+    vidvid.click()
+
+
 def denisk(voice_input):
     driver.get('https://open.spotify.com/')
     search = driver.find_element(By.ID,"search")
@@ -161,13 +104,13 @@ def denisk(voice_input):
     search.submit()
 
 def maksg(voice_input):
-    driver.get('https://open.spotify.com')
-    search = driver.find_element(By.CLASS_NAME, 'Type__TypeElement-sc-goli3j-0 jqNXli ellipsis-one-line')
-    search.click
+    driver.get('https://www.youtube.com')
+    search = driver.find_element(By.ID, 'search-input')
+    search.click()
     search.send_keys()
-    search = driver.find_element(By.CLASS_NAME, '')
     search.submit()
-    
+
+
 
 
 
