@@ -7,6 +7,7 @@ from response.main import *
 import time
 import os
 import re
+import random
 service = Service(executable_path=os.path.abspath(__file__ + "/../../..") + "/chromedriver")
 driver = None
 def open_browser(voice_input):
@@ -15,8 +16,12 @@ def open_browser(voice_input):
         driver = webdriver.Chrome(service=service)
         driver.get('https://www.google.com/')
         tts_engine.say('Браузер открыт')
-
-
+def close_browser(voice_input):
+    global driver
+    if driver:
+        driver.close()
+        driver = None
+list_tolking.append(Tolking(['закрой браузер'], close_browser))
 def searchGoogle(voice_input):
     global driver
     print(driver)
@@ -74,6 +79,9 @@ list_tolking.append(Tolking(
 ))
 
 def youtube(voice_input):
+    global driver
+    if not driver:
+        open_browser(voice_input)
     voice_input = re.match(r'.+видео(.+)', voice_input).group(1)
     driver.get('https://www.youtube.com/')
     search_youtube = driver.find_element(By.NAME, 'search_query')
@@ -84,6 +92,9 @@ def youtube(voice_input):
     video.click()
 
 def twitch(voice_input):
+    global driver
+    if not driver:
+        open_browser(voice_input)
     voice_input = re.match(r'.+стрим(.+)', voice_input).group(1)
     driver.get('https://www.twitch.tv/?lang=ru')
     time.sleep(1)
@@ -95,6 +106,26 @@ def twitch(voice_input):
     time.sleep(3)
     search = driver.find_element(By.CLASS_NAME, "search-result-card__img-wrapper")
     search.click()
+
+def series(voice_input):
+    global driver
+    if not driver:
+        open_browser(voice_input)
+    driver.get('https://hd-rezka.biz/serialy/')
+    time.sleep(3)
+    x_button = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/span')
+    x_button.click()
+    time.sleep(3)
+    serial = driver.find_elements(By.CLASS_NAME, 'short-story')
+    choise = random.choice(serial)
+    choise.click()
+    time.sleep(3)
+    x_button = driver.find_element(By.XPATH, '/html/body/div[5]/div/div[2]/span')
+    x_button.click()
+
+list_tolking.append(Tolking(
+    ['сериал'], series)
+)
 
 list_tolking.append(Tolking(
     ['включи видео', 'открой видео', 'запусти видео', 'найди видео', 'видео'], youtube

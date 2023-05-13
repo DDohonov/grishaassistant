@@ -5,14 +5,15 @@ from selenium.webdriver.common.keys import Keys
 import time
 import random
 import os
+from urllib.parse import urlencode
 import random
 from selenium.webdriver.common.action_chains import ActionChains
 import random
 
-
 service = Service(executable_path=os.path.abspath(__file__ + "/..") + "/chromedriver")
 driver = webdriver.Chrome(service=service)
 driver.implicitly_wait(5)
+# driver.set_page_load_timeout(5)
 
 def registr():
     time.sleep(5)
@@ -26,19 +27,18 @@ def registr():
     search.click()
 
 def andrew(voice_input):
-    driver.get('https://rezka.ag/series/')
+    driver.get('https://1plus1.video/ru/playlist/serialy')
     time.sleep(3)
-    search = random.choices(driver.find_elements(By.CLASS_NAME, 'b-content__inline_item-cover'))
-    search.click()
-    time.sleep(3)
+    search = random.choices(driver.find_elements(By.CLASS_NAME, 'poster-item-thumbnail'))
+    search[0].click()
     # search.send_keys(voice_input)    driver.execute_script("window.scrollTo(0, -250);")
-    time.sleep(1)
-    search = driver.find_element(By.TAG_NAME, "video")
+    time.sleep(4)
+    search = driver.find_element(By.CLASS_NAME, "o-thumbnail")
     search.click()
     time.sleep(1)
-    search = driver.find_element(By.ID, "fullscreen13")
+    search = driver.find_elements(By.TAG_NAME, "button")[12]
     search.click()
-# andrew('qw')
+andrew('qw')
 # clastbro22@gmail.com
 # qwerty123456
 
@@ -48,7 +48,7 @@ def olya(voice_input):
     search = driver.find_element(By.CLASS_NAME,'fa fa-play-circle go-watch')
     search.click()
     #search.send_keys(voice_input)
-    search = driverfind_element(By.ID, '_atssh492')
+    search = driver.find_element(By.ID, '_atssh492')
     search.click
     #time.sleep(4)
     #search = driver.find_element(By.CLASS_NAME,'ScCoreLink-sc-16kq0mq-0 fQAQWb tw-link')
@@ -57,43 +57,71 @@ def olya(voice_input):
    
     
 def diana(voice_input):
-    driver.get('https://rezka.ag/?filter=last&genre=1')
-    number = random.randint(53553, 57253)
-    search = driver.find_element(By.ID, number)
+    driver.get('https://kinozed.com')
+    number = random.choice(driver.find_element(By.CLASS_NAME, 'short-title'))
+    time.sleep(4)
+    
+    search = driver.find_element(By.CLASS_NAME, 'mask flex-col ps-link')
     search.click()
+    time.sleep(3)
 
+    search = driver.find_element(By.CLASS_NAME, 'go__link js-scroll__to')
+    search.click()
+    time.sleep(3)
+
+    search = driver.find_element(By.CLASS_NAME, 'tabs-b video-box visible')
+    search.click()
+# diana('ee')
 
     #encore-bright-accent-set
 def denisM(voice_input):
-    driver.get('https://rezka.ag/series/best/')
-    search = driver.find_elements(By.ID, 'search-field')[2]
-    time.sleep(2)
-    serii = driver.find_element(By.CLASS_NAME, 'b-content__inline_item-link')
+    driver.get('https://hd-rezka.pro/serialy/')
+    serii = driver.find_elements(By.CLASS_NAME, 'short-title')
+    choise = random.choice(serii)
+    choise.click()
+    time.sleep(3)
+    knopka = driver.find_element(By.CLASS_NAME, 'button_1_nBS iconMD_2O8pO')
+    choise.click()
     
+#It will be worked!!!        
 def art(voiceinput):
-    driver.page_load_strategy = 'none'
-    driver.get('https://rezka.ag/series/')
-    time.sleep(1)
+    driver.get('https://hd-rezka.biz/serialy/')
     time.sleep(2)
-    driver.stop()
-    serial = driver.find_elements(By.CLASS_NAME, 'b-content__inline_item-cover')
+    x_button = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/span')
+    x_button.click()
+    time.sleep(2)
+    serial = driver.find_elements(By.CLASS_NAME, 'short-story')
     choise = random.choice(serial)
     choise.click()
+    time.sleep(2)
+    x_button = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/span')
+    x_button.click()    
+    time.sleep(1)
+    play_video = driver.find_element(By.CLASS_NAME, 'center_1Q6uP')
+    play_video.click()
 art('rrr')
+
 def vanya(voice_input):
-    driver.get('https://rezka.ag/ps:/ww')
-    search = driver.find_element(By.CLASS_NAME, 'b-search__submit')
+    driver.get('https://megogo.net/ru/series/main')
+    search = random.choice(driver.find_element(By.CLASS_NAME,'promoSlide-poster entered loaded'))
     search.click()
+    search = driver.find_element(By.CLASS_NAME,'loaded entered loading')
+    
+    
+    
+    
     
 
 
 def danya(voice_input):
-    driver.get("hhttps://rezka.ag/ssereriebs/be2st/2022/")
-    entrentr = driver.find_element(By.ID, "")
-    entrentr.click() 
-    sksk = driver.send_keys(voice_input) 
-    sksk.submit()
-    vidvid = driver.find_elements(By.CLASS_NAME, "")[1]
+    driver.get("https://filmix.ac/random_serial")
+    entrentr = driver.find_elements(By.CLASS_NAME, "name")[14]
+    time.sleep(8)
+    entrentr.click()
+    # sksk = driver.send_keys(voice_input) 
+    # sksk.submit()
+    time.sleep(5)
+    vidvid = driver.find_elements(By.CLASS_NAME, "fancybox")[1]
     vidvid.click()
 
 
@@ -104,7 +132,7 @@ def denisk(voice_input):
     search.submit()
 
 def maksg(voice_input):
-    driver.get('https://www.youtube.com')
+    driver.get('https://hd-rezka.biz')
     search = driver.find_element(By.ID, 'search-input')
     search.click()
     search.send_keys()

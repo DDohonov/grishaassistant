@@ -84,7 +84,7 @@ list_tolking.append(Tolking(
 
 # game zeith2
 def game_response(voice_input):
-    game_list = ['сиес гоу', 'оверватч 3', 'фарминг симулятор', 'фаллаут', 'резидент евил', 'гта','майнкрафт', 'форза хорайзен']
+    game_list = ['сиес гоу', 'оверватч 3', 'фарминг симулятор', 'фаллаут', 'резидент евил', 'гєтєа','майнкрафт', 'форза хорайзен']
     random_answer = random.choice(game_list)
     tts_engine.say(random_answer)
 
