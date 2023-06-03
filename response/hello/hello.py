@@ -43,7 +43,7 @@ list_tolking.append(Tolking(
 
 # kto tvoi sozdatel андрей помогал denisk
 def owner_response(voice_input): 
-    list_owner = ['меня создал человек','твоя мама', "питонисты", 'обезьяна без волос', 'тот кто умный, а ты нет', "что повтори", "не ты"] #имба аххахахахахаххаха ультааааа хаахахха хахахх
+    list_owner = ['меня создал человек', "питонисты",  "что повтори"] #имба аххахахахахаххаха ультааааа хаахахха хахахх
     random_answer = random.choice(list_owner)
     tts_engine.say(random_answer)
 list_tolking.append(Tolking(
@@ -52,7 +52,7 @@ list_tolking.append(Tolking(
 
 # who are you maks gaks g
 def whoareyou_response(voice_input):
-    hello_list = ['я гриша', 'гриша у аппарата', 'гриша', "эксперементальный бот по комуникации с людьми и разработки плана уничтожения человечества"]
+    hello_list = ["эксперементальный бот по комуникации с людьми и разработки плана уничтожения человечества"]
     random_answer = random.choice(hello_list)
     tts_engine.say(random_answer)
 
