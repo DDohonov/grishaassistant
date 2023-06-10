@@ -7,6 +7,7 @@ def hello_response(voice_input):
     tts_engine.say(random_answer)
     
     
+    
 list_tolking.append(Tolking(
     ['привет', 'здрасте', 'гриша', 'григорий', 'к работе', 'помоги', 'старт'],
     hello_response))
@@ -14,7 +15,7 @@ list_tolking.append(Tolking(
 
 # Kak dela (by Maksim Vasilyev)
 def howareyou_response(voice_input):
-    list_howareyou = ['нормально', 'хорошо', 'топово', 'хых.гыг','Глобала в кс апнул']
+    list_howareyou = ['нормально', 'хорошо', 'топово', 'хых.гыг','Глобала в кс апнул', 'сегодня смотрел как парень палку кидал']
     random_answer_howareyou = random.choice(list_howareyou)
     tts_engine.say(random_answer_howareyou)
 list_tolking.append(Tolking(
