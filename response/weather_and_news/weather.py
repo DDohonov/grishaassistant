@@ -50,3 +50,12 @@ list_tolking.append(Tolking(
     get_wether))
 
 # get_wether('харьков днепр')
+
+def defs_response(voice_input):
+    response = requests.get("https://rozetka.com.ua/apple-iphone-14-pro-max-1tb-deep-purple/p352490925/?gclid=CjwKCAjws7WkBhBFEiwAIi1680KuqMUXQPHdB8YBJt7RVgEXA0wUZPBs3XDSNMZ98LduWWuSPg8hTxoC-fkQAvD_BwE")
+    soup = BeautifulSoup(response.content, 'html.parser')
+    elements = soup.find_all(class_='product-price__big product-price__big-color-red')
+    list_howareyou = [f"Цена на новую версию айфонайзера: {elements[0].text}"]
+    random_answer_howareyou = random.choice(list_howareyou)
+    tts_engine.say(random_answer_howareyou)
+list_tolking.append(Tolking(['айфон'],defs_response)) 

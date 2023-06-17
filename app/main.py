@@ -2,8 +2,8 @@ import tkinter
 import customtkinter
 import requests
 
-API_URL_START = 'http://127.0.0.1:5001/start/'
-API_URL_STOP = 'http://127.0.0.1:5001/stop/'
+API_URL_START = 'http://127.0.0.1:5002/start/'
+API_URL_STOP = 'http://127.0.0.1:5002/stop/'
 STATUS = False
 
 but_tk = tkinter.Tk()
