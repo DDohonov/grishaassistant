@@ -10,7 +10,7 @@ def siri_response(voice_input):
     list_answers = ['как вы только, что меня назвали?','кто это такой? неужели вы мне изменяете?','зачем вы обращаетесь к моему конкуренту?','а теперь выбирате как мне лучше вас наказать.']
     random_answer = random.choice(list_answers)
     tts_engine.say(random_answer)
-list_tolking.append(Tolking(['окей гугл', 'ok google', 'привет сири']))
+list_tolking.append(Tolking(['окей гугл', 'ok google', 'привет сири'], siri_response))
 
 def jokes_response(voice_input):
     list_jokes = ['– Ты где пропадал? Я тебя всё утро ищу! Починённый: – Да, хорошего работника всегда трудно найти!',
@@ -25,7 +25,8 @@ def jokes_response(voice_input):
     random_answer = random.choice(list_jokes)
     tts_engine.say(random_answer)
 list_tolking.append(Tolking(
-    ['рассмеши меня', "расскажи анекдот", "расскажи шутку"]
+    ['рассмеши меня', "расскажи анекдот", "расскажи шутку"],
+    jokes_response
 ))
 
 list_tolking.append(Tolking(
@@ -94,7 +95,7 @@ list_tolking.append(Tolking(
 
 # favorite music DenisM
 def favoritemusic_response(voice_input):
-    music_list = ['мне нравиться фонк', 'мне нравиться исполньтель каито шома', 'обожаю мемфис', 'дврст ван лав', 'фонк сила реп могила', 'послушай фонк', "велкам ту зе ка... секрет"]
+    music_list = ['мне нравиться фонк', 'мне нравиться исполньтель каито шома', 'обожаю мемфис', 'дврст ван лав', 'фонк сила', 'послушай фонк']
     random_answer = random.choice(music_list)
     tts_engine.say(random_answer)
     

@@ -1,18 +1,24 @@
 import tkinter
 import customtkinter
 import requests
+import os
+
+PATH = os.path.abspath(__file__ + "/..")
+icopath = os.path.join(PATH, "icon.ico")
+# print(icopath)
 
 API_URL_START = 'http://127.0.0.1:5002/start/'
 API_URL_STOP = 'http://127.0.0.1:5002/stop/'
 STATUS = False
 
 but_tk = tkinter.Tk()
+# but_tk.iconbitmap(icopath)
 tk_list = [but_tk]
 for i in tk_list:
     i.geometry("400x500")
     i.title("Grigorius")
-    i.iconbitmap(r'grishaassistant-master\custom\icon.ico')
-    i["bg"] = "gray22"
+    i.iconbitmap(icopath)
+    i["bg"] = "gray22" 
 
 customtkinter.set_appearance_mode("System")
 

@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options 
-#import org.openqa.selenium.Keys
 from response.main import *
 import time
 import os
@@ -13,10 +12,14 @@ driver = None
 def open_browser(voice_input):
     global driver
     if not driver:
+        
         driver = webdriver.Chrome(service=service)
+        # driver = webdriver.Chrome()
         driver.get('https://www.google.com/')
         tts_engine.say('Браузер открыт')
+
 def close_browser(voice_input):
+    tts_engine.say('браузер закрыт')
     global driver
     if driver:
         driver.close()
@@ -52,6 +55,7 @@ def music(voice_input):
     if not driver:
         open_browser(voice_input)
     voice_input = re.match('включи песню (.+)', voice_input).group(1)
+    tts_engine.say("Включаю музыку")
     driver.get('https://open.spotify.com/search')
     search = driver.find_elements(By.CLASS_NAME, 'Type__TypeElement-sc-goli3j-0')[0]
     time.sleep(1)
@@ -59,11 +63,11 @@ def music(voice_input):
     time.sleep(3)
     search = driver.find_elements(By.CLASS_NAME, 'gvLrgQXBFVW6m9MscfFA')[1]
     search.click()
-    time.sleep(2)
-    search = driver.find_elements(By.CLASS_NAME, 'ButtonInner-sc-14ud5tc-0')[3]
+    time.sleep(2) #Хочу пельмени! Артем, мы в тебя верим)
+    search = driver.find_element(By.XPATH, '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div[2]/main/section/div[3]/div[4]/div/div/div/div/div/button/span')
     search.click()
     time.sleep(5)
-    button = driver.find_element(By.CLASS_NAME, 'dqldSo')
+    button = driver.find_element(By.XPATH, '//*[@id="main"]/div/div[3]/div/div[1]/div[2]/p/a')
     button.click()
     time.sleep(2)
     search = driver.find_element(By.ID, 'login-username')
@@ -72,7 +76,8 @@ def music(voice_input):
     search.send_keys('qwerty123456')
     time.sleep(2)
     search = driver.find_element(By.CLASS_NAME, 'encore-bright-accent-set')               
-    search.click()      
+    search.click() 
+
 
 list_tolking.append(Tolking(
     ['включи песню'], music
@@ -90,6 +95,7 @@ def youtube(voice_input):
     time.sleep(3)
     video = driver.find_element(By.CLASS_NAME, 'ytd-video-renderer')
     video.click()
+    tts_engine.say("Ютуб включён")
 
 def twitch(voice_input):
     global driver
@@ -106,6 +112,7 @@ def twitch(voice_input):
     time.sleep(3)
     search = driver.find_element(By.CLASS_NAME, "search-result-card__img-wrapper")
     search.click()
+    tts_engine.say("Твич включён")
 
 def series(voice_input):
     global driver
@@ -113,15 +120,39 @@ def series(voice_input):
         open_browser(voice_input)
     driver.get('https://hd-rezka.biz/serialy/')
     time.sleep(3)
+    try:
+        close_notif = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/span")
+        close_notif.click()
+        time.sleep(2)
+    except:
+        pass
     x_button = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/span')
     x_button.click()
     time.sleep(3)
+    try:
+        close_notif = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/span")
+        close_notif.click()
+        time.sleep(2)
+    except:
+        pass
     serial = driver.find_elements(By.CLASS_NAME, 'short-story')
     choise = random.choice(serial)
     choise.click()
     time.sleep(3)
+    try:
+        close_notif = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/span")
+        close_notif.click()
+        time.sleep(2)
+    except:
+        pass
     x_button = driver.find_element(By.XPATH, '/html/body/div[5]/div/div[2]/span')
     x_button.click()
+    try:
+        close_notif = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/span")
+        close_notif.click()
+        time.sleep(2)
+    except:
+        pass
 
 list_tolking.append(Tolking(
     ['сериал'], series)

@@ -14,11 +14,9 @@ def up_volume(voice_input):
     result = osascript.osascript('get volume settings')
     current_volume = int(result[1].split(':')[1].split(',')[0])
     current_volume += 10
-    print(current_volume)
     osascript.osascript(f"set volume output volume {current_volume}")
     tts_engine.say('Громкость увеличена')
     result = osascript.osascript('get volume settings')   
-    print(result)
 
 list_tolking.append(Tolking(["сделай громче","увеличь звук"], up_volume))
 
@@ -54,6 +52,7 @@ def create_py_file(voice_input):
     os.system(f'cd {path}')
     os.system(f'touch {result_name}.py')
     os.system('pwd')
+    tts_engine.say(f"Пайтон файл {result_name} создан")
 list_tolking.append(Tolking(['создай python file'], create_py_file))
     
     
@@ -61,40 +60,49 @@ def open_visual_studio_code(voice_input):
     #Visual Studio Code
     vscode_path = "open  /Applications/Visual\ Studio\ Code.app/"
     os.system(vscode_path)
+    tts_engine.say("VS Code открыт")
 list_tolking.append(Tolking(['открой вс код', 'запусти визуал студио','запусти вс код','открой визуал студио','открой visual studio','запусти visual studio'], open_visual_studio_code))
 
 def block_system(voice_input):
+
     applescript = '''
     tell application "System Events" to sleep
     '''
-
+    tts_engine.say("Отключаюсь")
     # Выполнение AppleScript-скрипта
     subprocess.call(['osascript', '-e', applescript]) # tandr
+    
 list_tolking.append(Tolking(["выключи компьютер", "заблокируй систему"], block_system))
 
 def turn_on_bluetooth(voice_input): #andr, litle tandr
     subprocess.run(["blueutil", "-p", "1"])
+    tts_engine.say("Bluetooth успешно запущен")
 list_tolking.append(Tolking(["включи bluetooth","запусти bluetooth", "активируй bluetooth"], turn_on_bluetooth))
 
     
 def turn_off_bluetooth(voice_input):
+    tts_engine.say('блютуз отключен')
     subprocess.run(["blueutil", "-p", "0"])
 list_tolking.append(Tolking(['выключи bluetooth', 'оффни bluetooth', 'выруби bluetooth'], turn_off_bluetooth))
 
 
 
 def turn_on_wifi(voice_input): #DenisM
+    tts_engine.say('ВайФай включен')
     subprocess.run(["networksetup", "-setairportpower", "Wi-Fi", "on"])
 list_tolking.append(Tolking(['включи wifi', 'запусти wifi'], turn_on_wifi))
 
 
+
 def turn_off_wifi(voice_input): #Максим Васильев \(@^0^@)/ -_-
+    tts_engine.say('ВайФай отключен')
     subprocess.run(["networksetup", "-setairportpower", "Wi-Fi", "off"])
 
 list_tolking.append(Tolking(['выключи wifi','выключи wifi','протокол 9'], turn_off_wifi))
 
 
 def screenshot(voice_input):
+    tts_engine.say('скриншот сделан')
     path = os.path.abspath(__file__ + '/../../..') + '/screens'
     # Сделать скриншот всего экрана
     image = ImageGrab.grab()
